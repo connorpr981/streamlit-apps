@@ -77,7 +77,7 @@ st.title("Summarization with LLMs")
 
 st.caption("One of the most widely touted benefits of Large Language Models (LLMs) is their ability to sift through vast amounts of unstructured data.")
 
-st.markdown("> Summarization can be broadly defined as an optimization problem in which the goal is to identify, extract, and condense **important information** from a larger body of content. The output of this process **always** expresses specific preferences regarding granularity, conciseness, purpose, and structure.")
+st.markdown("> 1. Summarization can be broadly defined as an optimization problem in which the goal is to identify, extract, and condense **important information** from a larger body of content.  \n>2. The output of this process **always** reveals preferences regarding granularity, conciseness, purpose, and structure.")
 
 st.divider()
 
