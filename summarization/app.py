@@ -81,7 +81,7 @@ st.markdown("> 1. Summarization can be broadly defined as an optimization proble
 
 st.divider()
 
-topic = st.text_input("Enter a recent news topic or use the example.", f"{example_topics[get_seed()]}")
+topic = st.text_input("Enter a recent news topic or use the example:", f"{example_topics[get_seed()]}")
 if not st.button("Start"):
     st.stop()
     
