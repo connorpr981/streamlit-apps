@@ -77,7 +77,7 @@ st.title("Summarization with LLMs")
 
 st.caption("One of the most touted benefits of Large Language Models (LLMs) is their ability to sift through vast amounts of unstructured data.")
 
-st.markdown("> Summarization can be broadly defined as an optimization problem where the goal is to identify, extract, and condense **important information** from a larger body of content. The output of this process **always** expresses specific preferences regarding granularity, conciseness, purpose, and structure.")
+st.markdown("> Summarization can be broadly defined as an optimization problem in which the goal is to identify, extract, and condense **important information** from a larger body of content. The output of this process **always** expresses specific preferences regarding granularity, conciseness, purpose, and structure.")
 
 st.divider()
 
@@ -90,7 +90,6 @@ with st.spinner(f"Fetching articles for **{topic}**..."):
     articles_df = articles_df[articles_df['text'] != '']
     articles_df = articles_df.sample(min(25, len(articles_df))).reset_index(drop=True)
 st.success(f"Fetched {len(articles_df)} articles for {topic}.")
-
 
 st.divider()
 
@@ -287,6 +286,6 @@ st.warning("""**There are some limitations to consider:**
 **Some of the obvious first steps to improve this process would be to:**
 - Pre-filter articles for relevance to the specific hypothesis before forming questions so that the model isn't distracted by irrelevant information.
 - Use a wider range of data sources than a single news aggregator.
-- Focus the process on a specific use-case, such as monitoring an investment thesis or verifying a diagnosis, to achieve more meaningful results.""")
+- Focus the process on a specific use-case, such as monitoring an investment thesis or continuously verifying a diagnosis, to achieve more meaningful results.""")
 
 st.divider()
