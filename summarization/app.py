@@ -18,9 +18,6 @@ example_topics = [
     "Microsoft OpenAI Partnership",
     "Federal Reserve Interest Rate Decision",
     "Taylor Swift Relationship Status",
-    "Donald Trump",
-    "Joe Biden",
-    "TSLA Stock"
 ]
 
 def get_response(messages, model='gpt-4o'):
