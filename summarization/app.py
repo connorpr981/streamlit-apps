@@ -133,6 +133,8 @@ st.success("Great! We've established that we can generate clearer and more conci
 
 st.warning("**However, for a variety of reasons, this isn't really more valuable than just skimming the article yourself:**  \n - Most of the value in skimming does not come from looking at one article: it comes drawing cross-article inferences.\n - We can't really be sure about what information was lost during the summarization process; when skimming, the information you focus on in each successive article will be influenced by the previous articles, allowing you to make more meaningful decisions about what to keep and discard.\n     - Since each summary is independent, there is no reason to believe the details kept during summarization would be correlated across articles.\n")
 
+st.error("I would consider this approach rather apathetic.")
+
 st.divider()
 
 st.subheader("Task Oriented Summarization")
