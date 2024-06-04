@@ -77,7 +77,7 @@ st.title("Summarization with LLMs")
 
 st.caption("One of the most widely touted benefits of Large Language Models (LLMs) is their ability to sift through vast amounts of unstructured data.")
 
-st.markdown("> 1. Summarization can be broadly defined as an optimization problem in which the goal is to identify, extract, and condense **important information** from a larger body of content.  \n>2. The output of this process **always** reveals preferences regarding granularity, conciseness, purpose, and structure.")
+st.markdown("> Summarization can be broadly defined as an optimization problem in which the goal is to identify, extract, and condense **important information** from a larger body of content. In order for a summary to be valuable, this process must be interpretable.")
 
 st.divider()
 
@@ -150,7 +150,7 @@ with st.expander("News Cycle Summarization", expanded=True):
         
 st.success("The breadth certainly makes this more useful than a few single-article summaries!")
 
-st.warning("This is a good starting point, but we can do better:\n - If you retrieved more than 20 articles, the model probably didn't reference all of the sources.\n - We also have no idea why it made the decisions it did around the inclusion/exclusion of information.\n - We could ask the model to explain its reasoning *ex post*, and it would likely generate a plausible explanation, but this approach has numerous limitations and requires several logical leaps.")
+st.warning("This is a good starting point, but we can do better:\n - If you retrieved more than 20 articles, the model probably didn't reference all of the sources.\n - We also have no idea why it made the decisions it did around the inclusion/exclusion of information.\n - We could ask the model to explain its reasoning *ex post*, and it would likely generate a plausible explanation, but this approach has numerous limitations and requires several logical assumptions to interpret.")
 
 
 st.divider()
