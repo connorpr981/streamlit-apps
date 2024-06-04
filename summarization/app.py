@@ -140,7 +140,7 @@ st.divider()
 
 st.subheader("Task Oriented Summarization")
 
-st.info("One potential solution to these problems is to include multiple articles (such as a sample from the recent news cycle) in the same prompt. This feels like it would be more useful than summarizing single articles, since we can ask the model to help draw connections between them. It also feels like a suitable task for a large language model, as it takes advantage of the inherent attention mechanisms. We'll also ask it to cite sources inline for traceability. We'll call this a ***task-oriented summary***.")
+st.info("One potential solution to these problems is to include multiple articles (such as a sample from the recent news cycle) in the same prompt. This feels like it would be more useful than summarizing single articles, since we can ask the model to help draw connections between them. We'll also ask it to cite sources inline for traceability. We'll call this a ***task-oriented summary***.")
 
 st.code(f"""
 system_prompt = \"\"\"\n{prompts.cycle_system_prompt}\n\"\"\"
