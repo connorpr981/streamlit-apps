@@ -189,6 +189,8 @@ st.warning("This is a good example of how we can use LLMs to sift through large 
 
 st.divider()
 
+st.subheader("Adding Layers")
+
 st.info("One potential application of this pattern is to use it to directionally update likelihood judgements: this is a simplistic example of feature extraction. We'll use the model to generate the hypothesis here, as well as a likelihood, but again, you could always come up with this yourself to test your own biases. After that, we'll generate a series of questions and use them to test the hypothesis before answering them in the summary.")
 
 st.caption("*The prompts at this stage are multi-step and a bit longer, but still relatively simple. Please reference the GitHub repository for the full code if you'd like to view them.*")
