@@ -81,7 +81,7 @@ st.markdown("> Summarization can be broadly defined as an optimization problem w
 st.divider()
 
 i = random.randint(0, len(example_topics) - 1)
-topic = st.text_input("Enter a recent news topic (it's more fun if you pick your own):", f"{example_topics[i]}")
+topic = st.text_input("Enter a recent news topic or use an example topic; the results will be generated live regardless.", f"{example_topics[i]}")
 if not st.button("Start"):
     st.stop()
     
