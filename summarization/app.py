@@ -72,6 +72,10 @@ def get_articles_df(ticker):
     newsfetcher.run()
     return newsfetcher.articles_df
 
+@st.cache_data(show_spinner=False)
+def get_seed():
+    return random.randint(0, len(example_topics) - 1)
+
 st.title("Summarization with LLMs")
 
 st.caption("One of the most touted benefits of Large Language Models (LLMs) is their ability to sift through vast amounts of unstructured data.")
@@ -80,8 +84,7 @@ st.markdown("> Summarization can be broadly defined as an optimization problem w
 
 st.divider()
 
-i = random.randint(0, len(example_topics) - 1)
-topic = st.text_input("Enter a recent news topic or use an example topic. The results will be generated live regardless.", f"{example_topics[i]}")
+topic = st.text_input("Enter a recent news topic or use an example topic. The results will be generated live regardless.", f"{example_topics[get_seed()]}")
 if not st.button("Start"):
     st.stop()
     
