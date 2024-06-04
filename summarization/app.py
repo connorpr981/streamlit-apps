@@ -131,9 +131,7 @@ with col3.expander("Single Article Summarization - Article 3", expanded=True):
         
 st.success("Great! We've established that we can generate clearer and more concise representations of the information in the articles. We can call these ***compactness-oriented summaries***, since their purpose is simply to present a distilled version of the content. This is generally what people refer to by 'summarization.'")
 
-st.warning("**However, for a variety of reasons, this isn't really more valuable than just skimming the article yourself:**  \n - Most of the value in skimming does not come from looking at one article: it comes drawing cross-article inferences.\n - We can't really be sure about what information was lost during the summarization process; when skimming, the information you focus on in each successive article will be influenced by the previous articles, allowing you to make more meaningful decisions about what to keep and discard.\n     - Since each summary is independent, there is no reason to believe the details kept during summarization would be correlated across articles.\n")
-
-st.error("I would consider this approach rather apathetic.")
+st.warning("**However, for a variety of reasons, this isn't really more valuable than just skimming the article yourself:**  \n - Most of the value in skimming does not come from looking at one article: it comes drawing cross-article inferences.\n - We can't really be sure about what information was lost during the summarization process; when skimming, the information you focus on in each successive article will be influenced by the previous articles, allowing you to make more meaningful decisions about what to keep and discard.\n     - Since each summary is independent, there is no reason to believe the details kept during summarization would be correlated across articles.\n\nI would consider this approach rather apathetic.")
 
 st.divider()
 
@@ -143,7 +141,7 @@ st.info("One potential solution to these problems is to include multiple article
 
 st.code(f"""
 system_prompt = \"\"\"\n{prompts.cycle_system_prompt}\n\"\"\"
-user_prompt = \"\"\"\n\u007barticles_to_string(articles_df)\u007d\n\nEnsure you reference source URLs in the summaries using inline Markdown with footnote references, such as [^1^].\n\"\"\"
+user_prompt = \"\"\"\n{{articles_to_string(articles_df)}}\n\nEnsure you reference source URLs in the summaries using inline Markdown with footnote references, such as [^1^].\n\"\"\"
 """)
 
 with st.expander("News Cycle Summarization", expanded=True):
@@ -163,7 +161,7 @@ st.subheader("Objective-Oriented Summarization")
 
 st.info("Instead, let's try a different approach, somewhat similar to the one used in [RECOMP](https://arxiv.org/pdf/2310.04408) (**Re**trieve, **Co**mpress, **P**repend). We're not really focused on optimizing our search in this post, so our objective in this section will be to create a flow incorporating compression and prepension that yields a summary unlikely to be missing relevant information. We will also be incorporating some of our observations from the examples above to form a more meaningful summary, which we can call an ***objective-oriented summary***.")
 
-st.info("**We're going to need an objective to organize our compression.**  \nOne way you might do this manually would be to skim the headlines and write down a few questions you'd like to answer. While we'll have the model do this, you could always come up with these yourself. Then, we can leverage these questions by asking the model to answer them in the summary: this will help us increase our confidence that we're not losing important information relevant to our questions.")
+st.info("**We're going to need an objective to organize our compression.**  \nOne way you might do this manually would be to skim the headlines and write down a few questions you'd like to answer. While we'll have the model do this, you could always come up with these yourself. Then, we can leverage these questions by asking the model to answer them in the summary: this will help us decrease the likelihood of losing important information relevant to our questions.")
 
 st.caption("*The prompts at this stage are multi-step and a bit longer, but still relatively simple. Please reference the GitHub repository for the full code if you'd like to view them.*")
 
@@ -280,13 +278,13 @@ with st.expander("Final Analysis", expanded=True):
 
 st.success("Although this example is simplistic in order to be generally applicable, we've clearly demonstrated how LLMs can be used for tasks like summarization and feature extraction. Its easy to see how, with further development, this pattern could be expanded on and would scale well to evaluate large quantities of loosely structured data in a variety of domains. The real value here probably isn't in the feature extraction, but rather in the idea generation and contextualization of information.")
 
-st.warning("""There are some limitations to consider:
+st.warning("""**There are some limitations to consider:**
 - The model is heavily reliant on the quality and breadth of the input data to contextualize the value of individual pieces of information, and neither is a guarantee here.
 - The feature extraction example will almost never update the likelihood in a meaningful way since it uses the same data in each iteration.
     - If it does, **pay attention**, because the model likely picked up on something nuanced.
     - A more interesting approach might be to run this process two weeks apart for the same hypothesis.
            
-Some of the obvious first steps to improve this process would be to:
+**Some of the obvious first steps to improve this process would be to:**
 - Pre-filter articles for relevance to the specific hypothesis before forming questions so that the model isn't distracted by irrelevant information.
 - Use a wider range of data sources than a single news aggregator.
 - Focus the process on a specific use-case, such as monitoring an investment thesis or verifying a diagnosis, to achieve more meaningful results.""")
