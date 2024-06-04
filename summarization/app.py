@@ -4,6 +4,7 @@ from newsfetcher import NewsFetcher
 import json
 import prompts
 import datetime
+import random
 
 client = OpenAI()
 
@@ -12,6 +13,15 @@ st.set_page_config(
     page_icon=":bar_chart:",
     layout="wide",
 )
+
+example_topics = [
+    "Microsoft OpenAI Partnership",
+    "Federal Reserve Interest Rate Decision",
+    "Taylor Swift Relationship Status",
+    "Donald Trump",
+    "Joe Biden",
+    "TSLA Stock"
+]
 
 def get_response(messages, model='gpt-4o'):
     response = client.chat.completions.create(
@@ -70,7 +80,8 @@ st.markdown("> Summarization can be broadly defined as an optimization problem w
 
 st.divider()
 
-topic = st.text_input("Enter a recent news topic:", "Microsoft OpenAI Partnership")
+i = random.randint(0, len(example_topics) - 1)
+topic = st.text_input("Enter a recent news topic (it's more fun if you pick your own):", f"{example_topics[i]}")
 if not st.button("Start"):
     st.stop()
     
@@ -150,7 +161,7 @@ st.subheader("Objective-Oriented Summarization")
 
 st.info("Instead, let's try a different approach, somewhat similar to the one used in [RECOMP](https://arxiv.org/pdf/2310.04408) (**Re**trieve, **Co**mpress, **P**repend). We're not really focused on optimizing our search in this post, so our objective in this section will be to create a flow incorporating compression and prepension that yields a summary unlikely to be missing relevant information. We will also be incorporating some of our observations from the examples above to form a more meaningful summary, which we can call an ***objective-oriented summary***.")
 
-st.caption("We're going to need an objective to guide our compression: one way you might do this manually would be to skim the headlines and write down a few questions you'd like to answer. While we'll have the model do this, you could always come up with these yourself. Then, we can use these questions to guide our compression by asking the model to answer them in the summary: this will help us increase our confidence that we're not losing important information relevant to our questions.")
+st.caption("**We're going to need an objective to guide our compression.** One way you might do this manually would be to skim the headlines and write down a few questions you'd like to answer. While we'll have the model do this, you could always come up with these yourself. Then, we can use these questions to guide our compression by asking the model to answer them in the summary: this will help us increase our confidence that we're not losing important information relevant to our questions.")
 
 st.caption("*The prompts at this stage are multi-step and a bit longer, but still relatively simple. Please reference the GitHub repository for the full code if you'd like to view them.*")
 
@@ -263,10 +274,10 @@ with st.expander("Final Analysis", expanded=True):
             col3.caption("Areas for Further Research")
             col3.write(final_analysis['further_research'])
 
-st.success("While our example is simplistic, we've clearly demonstrated how LLMs can be used for tasks like summarization and feature extraction. Its easy to see how, with further development, this pattern could be expanded on and would scale well to evaluate large quantities of loosely structured data in a variety of domains. The real value here probably isn't in the feature extraction, but rather in the idea generation and contextualization of the information.")
+st.success("Although this example is simplistic in order to be generally applicable, we've clearly demonstrated how LLMs can be used for tasks like summarization and feature extraction. Its easy to see how, with further development, this pattern could be expanded on and would scale well to evaluate large quantities of loosely structured data in a variety of domains. The real value here probably isn't in the feature extraction, but rather in the idea generation and contextualization of the information.")
 
-st.warning("""While this definitely has potential, there are some limitations to consider:
-- The model is heavily reliant on the quality and breadth of the input data, and neither is a guarantee here.
+st.warning("""There are some limitations to consider:
+- The model is heavily reliant on the quality and breadth of the input data to contextualize the value of individual data points, and neither is a guarantee here.
 - The feature extraction example will almost never update the likelihood in a meaningful way since it uses the same data in each iteration.
     - If it does, **pay attention**, because the model likely picked up on something nuanced.
     - A more interesting approach might be to run this process two weeks apart for the same hypothesis.
