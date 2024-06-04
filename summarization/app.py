@@ -81,7 +81,7 @@ st.markdown("> Summarization can be broadly defined as an optimization problem i
 
 st.divider()
 
-topic = st.text_input("Enter a recent news topic or use an example topic. The results will be generated live regardless.", f"{example_topics[get_seed()]}")
+topic = st.text_input("Enter a recent news topic or use the example.", f"{example_topics[get_seed()]}")
 if not st.button("Start"):
     st.stop()
     
@@ -130,13 +130,13 @@ with col3.expander("Single Article Summarization - Article 3", expanded=True):
         
 st.success("Great! We've established that we can generate clearer and more concise representations of the information in the articles. We can call these ***compactness-oriented summaries***, since their purpose is simply to present a distilled version of the content. This is generally what people refer to by 'summarization.'")
 
-st.warning("**However, for a variety of reasons, this isn't really more valuable than just skimming the article yourself:**  \n - Most of the value in skimming does not come from looking at one article: it comes drawing cross-article inferences.\n - We can't really be sure about what information was lost during the summarization process; when skimming, the information you focus on in each successive article will be influenced by the previous articles, allowing you to make more meaningful decisions about what to keep and discard.\n     - Since each summary is independent, there is no reason to believe the details kept during summarization would be correlated across articles.\n\nI would consider this approach rather apathetic.")
+st.warning("**However, for a variety of reasons, this isn't really more valuable than just skimming the article yourself:**  \n - Most of the value in skimming does not come from looking at one article: it comes drawing cross-article inferences.\n - We can't really be sure about what information was lost during the summarization process; when skimming, the information you focus on in each successive article will be influenced by the previous articles, allowing you to make more meaningful decisions about what to keep and discard.\n     - Since each summary is independent, there is no reason to believe the details kept during summarization would be correlated across articles.\n\n")
 
 st.divider()
 
 st.subheader("Task Oriented Summarization")
 
-st.info("One potential solution to these problems is to include multiple articles (such as a sample from the recent news cycle) in the same prompt. This feels like it would be more useful than summarizing single articles, since we can ask the model to help draw connections between them. We'll also ask it to cite sources inline for traceability. We'll call this a ***task-oriented summary***.")
+st.info("One potential solution to these problems is to include multiple articles (such as a sample from the recent news cycle) in the same prompt. This feels like it would be more useful than summarizing single articles, since we can ask the model to help draw connections between them. We'll also ask it to cite sources inline for traceability and can call this a ***task-oriented summary***.")
 
 st.code(f"""
 system_prompt = \"\"\"\n{prompts.cycle_system_prompt}\n\"\"\"
@@ -286,6 +286,6 @@ st.warning("""**There are some limitations to consider:**
 **Some of the obvious first steps to improve this process would be to:**
 - Pre-filter articles for relevance to the specific hypothesis before forming questions so that the model isn't distracted by irrelevant information.
 - Use a wider range of data sources than a single news aggregator.
-- Focus the process on a specific use-case, such as monitoring an investment thesis or continuously verifying a diagnosis, to achieve more meaningful results.""")
+- Focus the process on a specific use-case, such as monitoring an investment thesis or continuously verifying a medical diagnosis, to achieve more meaningful results.""")
 
 st.divider()
