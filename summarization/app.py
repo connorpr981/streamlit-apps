@@ -75,7 +75,7 @@ def get_seed():
 
 st.title("Summarization with LLMs")
 
-st.caption("One of the most widely touted benefits of Large Language Models (LLMs) is their ability to sift through vast amounts of unstructured data.")
+st.caption("A benefit of Large Language Models (LLMs) is their ability to sift through vast amounts of unstructured data.")
 
 st.markdown("> 1. Summarization can be broadly defined as an optimization problem in which the goal is to identify, extract, and condense **important information** from a larger body of content.  \n> 2. For a summary to have value, this process must be **interpretable**.")
 
@@ -134,9 +134,9 @@ st.warning("**However, for a variety of reasons, this isn't really more valuable
 
 st.divider()
 
-st.subheader("Task Oriented Summarization")
+st.subheader("News Cycle Summarization")
 
-st.info("One potential solution to these problems is to include multiple articles (such as a sample from the recent news cycle) in the same prompt. This feels like it would be more useful than summarizing single articles, since we can ask the model to help draw connections between them. We'll also ask it to cite sources inline for traceability and can call this a ***task-oriented summary***.")
+st.info("One potential solution to these problems is to include multiple articles (such as a sample from the recent news cycle) in the same prompt. This feels like it would be more useful than summarizing single articles, since we can ask the model to help draw connections between them. We'll also ask it to cite sources inline for traceability.")
 
 st.code(f"""
 system_prompt = \"\"\"\n{prompts.cycle_system_prompt}\n\"\"\"
@@ -156,9 +156,9 @@ st.warning("This is a good starting point, but we can do better:\n - If you retr
 st.divider()
 
 
-st.subheader("Objective-Oriented Summarization")
+st.subheader("Compression for Summarization")
 
-st.info("Instead, let's try a different approach, somewhat similar to the one used in [RECOMP](https://arxiv.org/pdf/2310.04408) (**Re**trieve, **Co**mpress, **P**repend). We're not really focused on optimizing our search in this post, so our objective in this section will be to create a flow incorporating compression and prepension that yields a summary unlikely to be missing relevant information. We will also be incorporating some of our observations from the examples above to form a more meaningful summary, which we can call an ***objective-oriented summary***.")
+st.info("Instead, let's try a different approach, somewhat similar to the one used in [RECOMP](https://arxiv.org/pdf/2310.04408) (**Re**trieve, **Co**mpress, **P**repend). We're not really focused on optimizing our search in this post, so our objective in this section will be to create a flow incorporating compression and prepension that yields a summary unlikely to be missing relevant information. We will also be incorporating some of our observations from the examples above to form a more meaningful summary.")
 
 st.info("**We're going to need an objective to organize our compression.**  \nOne way you might do this manually would be to skim the headlines and write down a few questions you'd like to answer. While we'll have the model do this, you could always come up with these yourself. Then, we can leverage these questions by asking the model to answer them in the summary: this will help us decrease the likelihood of losing important information relevant to our questions.")
 
